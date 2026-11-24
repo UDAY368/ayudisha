@@ -10,5 +10,7 @@ export const env = {
   enableWhatsApp: process.env.ENABLE_WHATSAPP === "true",
   hasDatabase: Boolean(process.env.DATABASE_URL),
   hasEmailProvider: Boolean(process.env.EMAIL_PROVIDER_API_KEY && process.env.ENQUIRY_NOTIFICATION_EMAIL),
+  /** Optional Search Console HTML-tag token (only needed for a URL-prefix property). */
+  googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION || undefined,
   hashSalt: process.env.HASH_SALT || "ayudisha-dev-salt",
 };

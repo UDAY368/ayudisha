@@ -16,6 +16,8 @@ export function buildMetadata({
   absoluteTitle?: boolean;
 }): Metadata {
   const index = env.isProductionSite && !noindex;
+  // Page-level openGraph replaces the root one, so the share image is set explicitly here.
+  const image = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} – ${site.tagline}` };
   return {
     title: absoluteTitle ? { absolute: title } : { absolute: title },
     description,
@@ -27,8 +29,9 @@ export function buildMetadata({
       url: path,
       title,
       description,
+      images: [image],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: [image.url] },
     robots: index ? { index: true, follow: true } : { index: false, follow: !noindex },
   };
 }

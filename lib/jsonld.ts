@@ -6,9 +6,12 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${env.siteUrl}/#organization`,
     name: site.name,
+    alternateName: ["Ayudisha", site.telugu, site.hindi],
     url: env.siteUrl,
-    logo: `${env.siteUrl}/icon.svg`,
+    logo: { "@type": "ImageObject", url: `${env.siteUrl}/logo.png`, width: 512, height: 512 },
+    image: `${env.siteUrl}/opengraph-image`,
     slogan: site.tagline,
     description:
       "AyuDisha is a digital platform that helps people explore holistic and complementary healthcare options and connect with practitioners for consultations.",
@@ -16,6 +19,13 @@ export function organizationJsonLd() {
     telephone: site.contact.phoneHref.replace("tel:", ""),
     sameAs: [site.social.instagram.href, site.social.facebook.href],
     areaServed: { "@type": "Country", name: "India" },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      telephone: site.contact.phoneHref.replace("tel:", ""),
+      email: site.contact.email,
+      areaServed: "IN",
+    },
   };
 }
 
@@ -23,9 +33,12 @@ export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${env.siteUrl}/#website`,
     name: site.name,
-    url: env.siteUrl,
+    alternateName: ["Ayudisha", "AyuDisha – Your Path to Natural Wellbeing"],
+    url: `${env.siteUrl}/`,
     inLanguage: "en-IN",
+    publisher: { "@id": `${env.siteUrl}/#organization` },
   };
 }
 
