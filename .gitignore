@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+.data/
+.env
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+# Private owner documents (credentials, ID numbers) — never commit
+documents/
+.photo-stage/
+.taste-skill/
+/ayudisha.txt
